@@ -21,9 +21,13 @@ npx bmad-method install --directory . --modules bmm --tools cursor --yes
 
 See [non-interactive installation](https://docs.bmad-method.org/how-to/non-interactive-installation/) for all flags. Official docs: [docs.bmad-method.org](https://docs.bmad-method.org/).
 
-### Optional: `uv`
+### Python helper: `uv`
 
-Some skills (including `bmad-build` and `bmad-build-auto`) use Python helpers via `uv run`. If those skills halt on activation, install [uv](https://docs.astral.sh/uv/getting-started/installation/) or ask your agent to set it up.
+BMAD skills (including `bmad-build`, `bmad-build-auto`, and several planning workflows) run Python helpers via `uv run`.
+
+**Cursor Cloud Agents:** this repo’s [`.cursor/environment.json`](.cursor/environment.json) runs [`.cursor/install-uv.sh`](.cursor/install-uv.sh) during environment setup. That script installs [uv](https://docs.astral.sh/uv/getting-started/installation/) with the official Astral installer and symlinks it into `/usr/local/bin` so login shells and agents find it on `PATH`.
+
+**Local / other machines:** run `bash .cursor/install-uv.sh`, or install uv manually from the Astral docs. Confirm with `uv --version` and re-run `npx bmad-method install` — the installer should report `Python UV check pass`.
 
 ## Where things live
 
